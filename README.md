@@ -2,6 +2,8 @@
 Kaggle Ultrasound Nerve Segmentation competition [Keras]
 
 # Now for python3.6 and keras 2.1.6.
+Enjoy!
+
 # Modified some files to use up-to-date package.
 1. data.py -- modified create_test_data() to include test_mask into npy for predict evaluation.   
                       -- resize here to let images input of different sizes possible.
