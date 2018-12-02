@@ -1,5 +1,19 @@
-# Ultrasound nerve segmentation using Keras (1.0.7)
+# Ultrasound nerve segmentation using Keras (2.1.6)
 Kaggle Ultrasound Nerve Segmentation competition [Keras]
+
+# Now for python3.6 and keras 2.1.6.
+# Modified some files to use up-to-date package.
+1. data.py -- modified create_test_data() to include test_mask into npy for predict evaluation.   
+           -- resize here let different size images in to the model.
+2. u_model.py -- updated Conv2D, BatchNormalization, concatenate according to keras2 API.
+3. train.py -- small changes.
+4. current.py -- add process and save test_mask.
+5. submission.py -- calulate mean dice score for test samples, save predicted images.
+6. add file keras_pre_img.py, which can be found at https://www.kaggle.com/hexietufts/easy-to-use-keras-imagedatagenerator
+
+
+
+
 
 #Install (Ubuntu {14,16}, GPU)
 
@@ -71,7 +85,7 @@ Motivation's explained in my internal pres (slides: http://www.slideshare.net/Ed
 
 I used U-net like architecture (http://arxiv.org/abs/1505.04597). Main differences:
  - inception blocks instead of VGG like
- - Conv with stride instead of MaxPooling
+ - Conv with stride instead of MaxPooling 有点意思
  - Dropout, p=0.5
  - skip connections from encoder to decoder layers with residual blocks
  - BatchNorm everywhere
@@ -90,7 +104,7 @@ Augmentation:
  - elastic transormation didn't help in this configuration
 
 Augmentation generator (generate augmented data on the fly for each epoch) didn't improve the score. 
-For prediction augmented images were used.
+For prediction augmented images were used to calculate the mean score.
 
 Validation:
 
